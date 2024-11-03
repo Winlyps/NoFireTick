@@ -14,6 +14,9 @@ class NoFireTick : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoFireTick plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doFireTick", "true")
+            logger.info("NoFireTick plugin has been disabled.")
+        }
     }
 }
